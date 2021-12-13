@@ -1,14 +1,12 @@
 from django import forms
-from .models import User
+from .models import AccountUser
 
 class AccountUserForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password']
+        model = AccountUser
+        fields = ['first_name', 'last_name', 'password']
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
             'password': forms.PasswordInput(attrs={'class': 'form-control'})
         }

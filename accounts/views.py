@@ -24,18 +24,17 @@ def sign_in(request):
 
 def sign_up(request):
     if request.method == "POST" :
-        filled_form = AccountUserForm(request.POST)
-        if filled_form.is_valid():
-            try:
-                user = AccountUser.objects.get(email=filled_form.cleaned_data.get("email"))
-                user_form = AccountUserForm()
-                return render(request, 'sign_up.html', {'form': user_form, 'note': 'user already exists'})
-            except AccountUser.DoesNotExist:
-                filled_form.save()
-                user_form = AccountUserForm()
-                return render(request, 'sign_in.html', {'form': user_form, 'note': 'Login to proceed'})
+        try:
+            user = AccountUser.objects.get(email=request.POST['email'])
+            return render(request, 'sign_up.html', {'note': 'user already exists'})
+        except AccountUser.DoesNotExist:
+            tmp_user = AccountUser.objects.create(email=request.POST['email'], 
+            password=request.POST['password'], 
+            first_name=request.POST['first_name'], 
+            last_name=request.POST['last_name'])
+            tmp_user.save() 
+            return render(request, 'sign_in.html', {'note': 'Login to proceed'})
     else:
-        user_form = AccountUserForm()
-        return render(request, 'sign_up.html', {'form': user_form})
+        return render(request, 'sign_up.html')
     
 
