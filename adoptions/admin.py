@@ -1,3 +1,6 @@
 from django.contrib import admin
+from accounts.models import AccountUser
+from adoptions.models import Pet
 
-# Register your models here.
+admin.site.register(AccountUser)
+admin.site.register(Pet)

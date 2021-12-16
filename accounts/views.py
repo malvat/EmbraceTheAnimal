@@ -9,6 +9,7 @@ def sign_in(request):
         try: 
             user = AccountUser.objects.get(email=request.POST['email'], password=request.POST['password'])
             request.session['logged_in'] = True
+            request.session['user'] = user.GetValues()
             return redirect('home')
         except AccountUser.DoesNotExist:
             request.session['logged_in'] = False
