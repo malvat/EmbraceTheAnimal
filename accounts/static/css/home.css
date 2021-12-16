@@ -1,0 +1,38 @@
+.pet-main-container { 
+    display: flex;
+}
+
+.pet-container { 
+    height: 400px;
+    margin: 2%;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.4s filter;
+}
+
+.pet-container:hover .pet-information {
+    opacity: 1;
+}
+
+.pet-container:hover .pet-shade {
+    opacity: 0.5;
+}
+
+.pet-information { 
+    position: absolute;
+    bottom: 0;
+    margin: 5%;
+    transition: 0.4s opacity;
+    opacity: 0;
+    color: white;
+}
+
+.pet-shade { 
+    background-color: grey;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: 0.4s opacity;
+}

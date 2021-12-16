@@ -1,0 +1,93 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block 'scripts'%}
+    <link rel="stylesheet" href="{% static 'css/add_new_pet.css'%}"/>
+{% endblock %}
+
+{% block 'title'%}
+    Create Post | Embrace The Animal
+{% endblock %}
+
+{% block 'body' %}
+    <div class="main-container">
+        <h1 style="margin: 1%">
+            Create post
+        </h1>
+        <div class="post-container">
+            <div class="image-column">
+                <div class="profile-picture">
+                    <div class="edit-profile-picture" onclick="editProfilePicture()">
+                        <img src="{% static 'images/logos/edit.png' %}" />
+                        <input id="profile-picture-file" type="file" style="display:none"/>
+                    </div>
+                    <img src="{% static 'images/pet-default-profile.jpg' %}" />
+                </div>
+                <div class="post-about">
+
+                </div>
+            </div>
+            <div class="form-column">
+                <div class="form-input-container">
+                    <label>Name </label>
+                    <input type="text" placeholder="Dasiey" class="form-control" />
+                </div>
+                <div class="form-input-container">
+                    <label>Age </label>
+                    <input type="number" placeholder="1" class="form-control" />
+                </div>
+                <div class="form-input-container">
+                    <label>Species </label>
+                    <input type="text" placeholder="Dog" class="form-control" />
+                </div>
+                <div class="form-input-container">
+                    <label>Breed </label>
+                    <input type="text" placeholder="Siberian Husky" class="form-control" />
+                </div>
+                <div class="form-input-container">
+                    <label>Weight </label>
+                    <input type="text" placeholder="210" class="form-control" />
+                    <span style="margin-left: 2%;"> lbs </span>
+                </div>
+                <div class="form-input-container" style="justify-content: start">
+                    <label style="margin-right: 13%;">Sex </label>
+                    <div>
+                        <div>
+                            <input type="radio" id="male" name="sex" class="form-check-input" />
+                            <label class="form-check-label" for="male">
+                                Male
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="female" name="sex" class="form-check-input" />
+                            <label class="form-check-label" for="female">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-input-container">
+                    <label>Hobbies </label>
+                    <input type="text" placeholder="Barking, Drinking, Chasing" class="form-control" />
+                </div>
+
+            </div>
+        </div>
+        <div style="padding: 1%">
+            <label>Summary </label>
+            <textarea rows=3 placeholder="Dasiey is an incredible dog, she's friendly. She loves to sing, run and sleep. Her favorite foods are..." class="form-control"></textarea>
+        </div>
+        <div class="submit-btn">
+            <input type="submit"  class="btn btn-primary"/>
+        </div>
+    </div>
+
+    <!-- edit profile button functionality -->
+    <script>
+        function editProfilePicture() {
+            console.log('edit')
+            var file = document.getElementById('profile-picture-file'); 
+            file.click();
+        }
+    </script>
+{% endblock %}

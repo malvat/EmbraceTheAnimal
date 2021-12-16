@@ -1,0 +1,78 @@
+.main-container { 
+    padding: 2% 28%;
+}
+
+.post-container {
+    display: flex;
+}
+
+.profile-picture { 
+    height: 350px;
+    width: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.profile-picture img { 
+    height: 100%;
+}
+
+.edit-profile-picture { 
+    position: absolute;
+    top: 2%; 
+    right: 2%;
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #768fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: 0.4s box-shadow;
+}
+
+.edit-profile-picture:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.25), 0 3px 4px rgba(0,0,0,0.22);
+}
+
+.edit-profile-picture img { 
+    height: 60%;
+}
+
+.edit-profile-picture input { 
+    text-decoration: none;
+}
+
+.image-column { 
+    padding: 2% 1%;
+}
+
+.form-column { 
+    padding: 2% 0;
+    padding-left: 12%; 
+    width: 100%;
+}
+
+.form-input-container { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3% 0%;
+}
+
+.form-input-container label {
+    margin-right: 5%;
+}
+
+.submit-btn { 
+    display: flex; 
+    justify-content: flex-end;
+    margin: 0 2%;
+}

@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block 'scripts'%}
+    <link rel="stylesheet" href="{% static 'css/home.css'%}"/>
+{% endblock %}
+
+{% block 'title'%}
+    Home | Embrace The Animal
+{% endblock %}
+
+{% block 'add_new_pet' %}
+    {% if logged_in %}
+        <a class="nav-link" href="{% url 'add_new_pet'%}"> Add New <span class="sr-only">(current)</span></a>
+    {% endif %}
+{% endblock %}
+
+{% block 'log_out' %}
+    {% if logged_in %}
+        <a class="nav-link" style="color: white;" href="{% url 'sign_out'%}"> Log out </a>
+    {% else %}
+        <a class="nav-link" style="color: white;" href="{% url 'sign_in'%}"> Sign in </a>
+    {% endif %}
+{% endblock %}
+
+{% block 'body' %}
+    <div class="pet-main-container">
+        <div class="pet-container">
+            <div class="pet-shade">
+            </div>
+            <div class="pet-information">
+                <h3>
+                    Dasie
+                </h1>
+                <h5>
+                    Golden Retriever · 2 Year
+                </h3>
+            </div>
+            <img src="{% static 'images/background.jpg' %}" class="img-fluid" style="height: 100%;"/>
+        </div>
+    </div>
+{% endblock %}

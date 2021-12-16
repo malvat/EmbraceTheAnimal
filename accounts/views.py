@@ -1,26 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.shortcuts import render
 from django.http import Http404
 from .models import AccountUser
 from .forms import AccountUserForm
 
 def sign_in(request): 
-    user_form = AccountUserForm()
     if request.method == "POST":
-        # try: 
-            print(request.POST['email'], request.POST['password'])
-            user = AccountUser.objects.all()
-            print(user)
+        try: 
+            user = AccountUser.objects.get(email=request.POST['email'], password=request.POST['password'])
             request.session['logged_in'] = True
-            return render(request, 'home.html')
-        # except AccountUser.DoesNotExist:
-            # request.session['logged_in'] = False
-            # return render(request, 'sign_in.html', {'form': user_form, 'note': 'please try again'})
+            return redirect('home')
+        except AccountUser.DoesNotExist:
+            request.session['logged_in'] = False
+            return render(request, 'sign_in.html', {'note': 'please try again'})
     else:
         if 'logged_in' in request.session.keys():
             if request.session['logged_in']:
-                return render(request, 'home.html')
-        return render(request, 'sign_in.html', {'form': user_form})
+                return redirect('home')
+        return render(request, 'sign_in.html')
 
 def sign_up(request):
     if request.method == "POST" :
@@ -37,4 +34,8 @@ def sign_up(request):
     else:
         return render(request, 'sign_up.html')
     
+def sign_out(request):
+    if 'logged_in' in request.session.keys(): 
+        request.session['logged_in'] = False
+    return redirect('sign_in')
 
