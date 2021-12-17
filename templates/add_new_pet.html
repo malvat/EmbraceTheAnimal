@@ -20,9 +20,9 @@
                     <div class="profile-picture">
                         <div class="edit-profile-picture" onclick="editProfilePicture()">
                             <img src="{% static 'images/logos/edit.png' %}" />
-                            <input id="profile-picture-file" name="profile_pic" type="file" style="display:none"/>
+                            <input id="profile-picture-file" name="profile_pic" onchange="fileUploaded()" type="file" style="display:none"/>
                         </div>
-                        <img src="{% static 'images/pet-default-profile.jpg' %}" />
+                        <img id="profile-picture" src="{% static 'images/pet-default-profile.jpg' %}" />
                     </div>
                     <div class="post-about">
     
@@ -91,6 +91,12 @@
             console.log('edit')
             var file = document.getElementById('profile-picture-file'); 
             file.click();
+        }
+
+        function fileUploaded() {
+            var profile_container = document.getElementById('profile-picture');
+            var file = document.getElementById('profile-picture-file'); 
+            profile_container.src = URL.createObjectURL(file.files[0]);
         }
     </script>
 {% endblock %}
