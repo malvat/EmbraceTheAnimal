@@ -1,14 +1,23 @@
 .pet-main-container { 
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pet-container { 
     height: 400px;
+    width: 300px;
     margin: 2%;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
     transition: 0.4s filter;
+}
+
+.pet-container:hover {
+    cursor: pointer;
 }
 
 .pet-container:hover .pet-information {
@@ -26,6 +35,8 @@
     transition: 0.4s opacity;
     opacity: 0;
     color: white;
+    width: 100%;
+    padding: 2% 10%;
 }
 
 .pet-shade { 

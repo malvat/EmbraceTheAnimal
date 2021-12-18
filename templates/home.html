@@ -24,18 +24,28 @@
 
 {% block 'body' %}
     <div class="pet-main-container">
-        <div class="pet-container">
-            <div class="pet-shade">
+        {% for pet in pets %}
+            <div class="pet-container" onclick="goToPetDetails(event, {{pet.id}})">
+                <div class="pet-shade">
+                </div>
+                <div class="pet-information">
+                    <h3>
+                        {{ pet.name }}
+                    </h1>
+                    <h5>
+                        {{ pet.breed }} · {{ pet.age }} Year
+                    </h3>
+                </div>
+                {% if pet.profile_pic %}
+                    <img src="{{ pet.profile_pic.url }}" style="height: 100%;"/>
+                {% endif %}
             </div>
-            <div class="pet-information">
-                <h3>
-                    Dasie
-                </h1>
-                <h5>
-                    Golden Retriever · 2 Year
-                </h3>
-            </div>
-            <img src="{% static 'images/background.jpg' %}" class="img-fluid" style="height: 100%;"/>
-        </div>
+        {% endfor %}
+        
     </div>
+    <script>
+        function goToPetDetails(event, id) {
+            location.href="adoptions/pet-detail/"+id;
+        }
+    </script>
 {% endblock %}

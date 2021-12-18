@@ -20,3 +20,9 @@ def add_new_pet(request):
         tmp_pet.submitter.add(current_user)
         tmp_pet.save()
     return render(request, 'add_new_pet.html')
+
+def pet_detail(request, id): 
+    pet = Pet.objects.get(pk=id)
+    return render(request, 'pet_details.html', {
+        "pet": pet
+    })

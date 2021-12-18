@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block 'scripts'%}
+    <link rel="stylesheet" href="{% static 'css/pet_details.css'%}"/>
+{% endblock %}
+
+{% block 'title'%}
+    Create Post | Embrace The Animal
+{% endblock %}
+
+{% block 'body' %}
+    <div class="main-container">
+        <h1 style="margin: 1%">
+            {{ pet.name }}
+        </h1>
+        <div class="post-container">
+            <div class="image-column">
+                <div class="profile-picture">
+                    <img id="profile-picture" src="{{ pet.profile_pic.url }}" />
+                </div>
+            </div>
+            <div class="form-column">
+                <div class="form-input-container">
+                    <label>Name </label>
+                    {{ pet.name }}
+                </div>
+                <div class="form-input-container">
+                    <label>Age </label>
+                    {{ pet.age }}
+                </div>
+                <div class="form-input-container">
+                    <label>Species </label>
+                    {{ pet.species }}
+                </div>
+                <div class="form-input-container">
+                    <label>Breed </label>
+                    {{ pet.breed }}
+                </div>
+                <div class="form-input-container">
+                    <label>Weight </label>
+                    {{ pet.weight }}
+                    <span style="margin-left: 2%;"> lbs </span>
+                </div>
+                <div class="form-input-container" style="justify-content: start">
+                    <label style="margin-right: 13%;">Sex </label>
+                    <div>
+                        {{ pet.sex }}
+                    </div>
+                </div>
+
+                <div class="form-input-container">
+                    <label>Hobbies </label>
+                    {{ pet.hobbies }}
+                </div>
+
+                <div class="form-input-container">
+                    <label>Submitter </label>
+                    {{ pet.submitter }}
+                </div>
+
+                <div class="form-input-container">
+                    <label>Submitter Email </label>
+                    {{ pet.submitter.email }}
+                </div>
+
+            </div>
+        </div>
+        <div class="summary" style="padding: 1%">
+            <label>Summary </label>
+            <div>
+                {{ pet.summary }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
